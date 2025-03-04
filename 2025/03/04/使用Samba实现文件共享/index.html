@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Winnie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Samba实现文件共享一、安装samba1. 更新系统，确保Ubuntu系统是最新的       2. 开始安装执行安装命令：       1sudo apt install samba samba-common         安装后提示忽略以下错误，先记录一下，防止后续出问题便于排查：     查看samba安装状态：     1samba --version          切换目录查看:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Samba实现文件共享">
+<meta property="og:url" content="https://winnietube.github.io/2025/03/04/%E4%BD%BF%E7%94%A8Samba%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Samba实现文件共享一、安装samba1. 更新系统，确保Ubuntu系统是最新的       2. 开始安装执行安装命令：       1sudo apt install samba samba-common         安装后提示忽略以下错误，先记录一下，防止后续出问题便于排查：     查看samba安装状态：     1samba --version          切换目录查看:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/1.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/2.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/3.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/4.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/5.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/6.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/7.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/8.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/9.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/10.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/11.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/12.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/13.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/14.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/15.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/16.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/17.png">
+<meta property="og:image" content="https://winnietube.github.io/img/samba/18.png">
+<meta property="article:published_time" content="2025-03-04T07:32:11.000Z">
+<meta property="article:modified_time" content="2025-03-04T08:10:43.281Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://winnietube.github.io/img/samba/1.png">
+  
+  
+  
+  <title>使用Samba实现文件共享 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"winnietube.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Winnie</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用Samba实现文件共享"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-04 15:32" pubdate>
+          2025年3月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          576 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">使用Samba实现文件共享</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Samba实现文件共享"><a href="#Samba实现文件共享" class="headerlink" title="Samba实现文件共享"></a>Samba实现文件共享</h1><h2 id="一、安装samba"><a href="#一、安装samba" class="headerlink" title="一、安装samba"></a>一、安装samba</h2><h3 id="1-更新系统，确保Ubuntu系统是最新的"><a href="#1-更新系统，确保Ubuntu系统是最新的" class="headerlink" title="1. 更新系统，确保Ubuntu系统是最新的"></a>1. 更新系统，确保Ubuntu系统是最新的</h3><p><img src="/../img/samba/1.png" srcset="/img/loading.gif" lazyload alt="1">      </p>
+<h3 id="2-开始安装"><a href="#2-开始安装" class="headerlink" title="2. 开始安装"></a>2. 开始安装</h3><p>执行安装命令：      </p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">sudo</span> apt install samba samba-<span class="hljs-meta">common</span>   <br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/2.png" srcset="/img/loading.gif" lazyload alt="2">    </p>
+<p>安装后提示忽略以下错误，先记录一下，防止后续出问题便于排查：<br><img src="/../img/samba/3.png" srcset="/img/loading.gif" lazyload alt="3">    </p>
+<p>查看samba安装状态：    </p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">samba <span class="hljs-comment">--version   </span><br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/4.png" srcset="/img/loading.gif" lazyload alt="4">     </p>
+<p>切换目录查看:    </p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">//</span>切换工作目录到此处，并通过<span class="hljs-keyword">ls</span>命令检查目录下文件。  <br><span class="hljs-keyword">cd</span> <span class="hljs-string">/etc/samba/</span>    <br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/5.png" srcset="/img/loading.gif" lazyload alt="5">    </p>
+<h3 id="3-创建共享目录"><a href="#3-创建共享目录" class="headerlink" title="3.  创建共享目录"></a>3.  创建共享目录</h3><p>创建要用于共享的目录，并将其权限设置为777（任何访问者均有read,write,execute权限）    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> /home/winnie/shared<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> -R 777 /home/winnie/shared<br><span class="hljs-built_in">ls</span> -alh<br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/6.png" srcset="/img/loading.gif" lazyload alt="6">   </p>
+<h3 id="4-创建samba用户并设置密码"><a href="#4-创建samba用户并设置密码" class="headerlink" title="4. 创建samba用户并设置密码"></a>4. 创建samba用户并设置密码</h3><h3 id="5-编辑samba配置文件"><a href="#5-编辑samba配置文件" class="headerlink" title="5. 编辑samba配置文件"></a>5. 编辑samba配置文件</h3><p>Samba 的配置文件位于 &#x2F;etc&#x2F;samba&#x2F;smb.conf。通过vim打开该文件（该文件对非管理员为read-only权限，应使用sudo或以root身份访问）  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /etc/samba/<br><span class="hljs-built_in">sudo</span> vim smb.conf<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/samba/7.png" srcset="/img/loading.gif" lazyload alt="7">   </p>
+<p>在文件尾部加上下列一段 （ <strong>注意替换为自己的用户名和共享目录路径</strong> ！）：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs abnf">[share]<br><span class="hljs-attribute">path</span> <span class="hljs-operator">=</span> /home/winnie/shared<br><span class="hljs-attribute">public</span> <span class="hljs-operator">=</span> yes<br><span class="hljs-attribute">browsable</span> <span class="hljs-operator">=</span> yes<br><span class="hljs-attribute">writable</span> <span class="hljs-operator">=</span> yes<br>valid users <span class="hljs-operator">=</span> winnie<br><span class="hljs-attribute">available</span> <span class="hljs-operator">=</span> yes<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/samba/8.png" srcset="/img/loading.gif" lazyload alt="8">   </p>
+<p>注意：<br><img src="/../img/samba/9.png" srcset="/img/loading.gif" lazyload alt="9">   </p>
+<h3 id="6-将用户添加到samba的管理系统"><a href="#6-将用户添加到samba的管理系统" class="headerlink" title="6. 将用户添加到samba的管理系统"></a>6. 将用户添加到samba的管理系统</h3><p>接下来要将用户添加到samba的管理系统中。<br>首先在&#x2F;etc&#x2F;samba目录下创建文件 smbpasswd：   </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">touch</span> /etc/samba/smbpasswd<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/samba/10.png" srcset="/img/loading.gif" lazyload alt="10">   </p>
+<p>然后将现有的 Linux 用户 winnie 添加到 Samba 的用户列表中，并设置该用户的 Samba 密码。设置成功后将会看到 Added user XXX的提示。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> smbpasswd -a winnie<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/samba/11.png" srcset="/img/loading.gif" lazyload alt="11">   </p>
+<p>通过以下命令启用用户，确保该用户可以登录samba服务。(启动成功后会提示Enable Username)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> smbpasswd -e winnie<br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/12.png" srcset="/img/loading.gif" lazyload alt="12">   </p>
+<p>修改完配置文件后，通过以下命令重启samba服务：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> /etc/init.d/smbd restart<br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/13.png" srcset="/img/loading.gif" lazyload alt="13">   </p>
+<p>重启服务之后测试所配置的samba（执行命令“testparm”）：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">testparm</span><br></code></pre></td></tr></table></figure>
+<p><img src="/../img/samba/14.png" srcset="/img/loading.gif" lazyload alt="14">   </p>
+<p>该命令会检查Samba配置文件语法以及逻辑上的错误，如果无错误将会显示我们的配置文件。<br>再通过smbclient的命令来再一步检查（#如果共享成功，则会要求键入密码）：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">smbclient <span class="hljs-punctuation">-</span>L <span class="hljs-comment">//localhost/shared</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/samba/15.png" srcset="/img/loading.gif" lazyload alt="15">   </p>
+<h3 id="7-打开Windows文件管理器输入-linux的IP地址"><a href="#7-打开Windows文件管理器输入-linux的IP地址" class="headerlink" title="7. 打开Windows文件管理器输入\linux的IP地址"></a>7. 打开Windows文件管理器输入\linux的IP地址</h3><p>如下：<br><img src="/../img/samba/16.png" srcset="/img/loading.gif" lazyload alt="16">   </p>
+<p>双击文件夹，输入网络凭据（也就是我们前面添加的用户和密码）进行访问。<br><img src="/../img/samba/17.png" srcset="/img/loading.gif" lazyload alt="17">   </p>
+<p>尝试把文件复制到共享文件夹shared当中后，验证一下：<br><img src="/../img/samba/18.png" srcset="/img/loading.gif" lazyload alt="18">   </p>
+<p>成功！！！</p>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/R6bandito/article/details/143080904">Linux与Windows文件共享:Samba的详细配置(Ubuntu)</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>使用Samba实现文件共享</div>
+      <div>https://winnietube.github.io/2025/03/04/使用Samba实现文件共享/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Winnie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/04/Sourceinsight%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="Sourceinsight安装记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Sourceinsight安装记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/04/Markdown%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/" title="Markdown文件编译语法规则">
+                        <span class="hidden-mobile">Markdown文件编译语法规则</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

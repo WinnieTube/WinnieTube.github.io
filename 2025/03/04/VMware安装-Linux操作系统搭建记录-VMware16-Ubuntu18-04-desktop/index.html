@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Winnie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)一、VMware虚拟机安装1. 下载vmware16安装包网上很多资源，这次顺手存一下到自己的百度网盘里了。   2. 安装（1）双击下载好的.exe程序开始安装   （2）点击下一步   （3）勾选同意后下一步   （4）更改VMware的安装位置，不建议放系统盘（C），更改后点下一步（可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)">
+<meta property="og:url" content="https://winnietube.github.io/2025/03/04/VMware%E5%AE%89%E8%A3%85-Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95-VMware16-Ubuntu18-04-desktop/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)一、VMware虚拟机安装1. 下载vmware16安装包网上很多资源，这次顺手存一下到自己的百度网盘里了。   2. 安装（1）双击下载好的.exe程序开始安装   （2）点击下一步   （3）勾选同意后下一步   （4）更改VMware的安装位置，不建议放系统盘（C），更改后点下一步（可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/1.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/2.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/3.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/4.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/5.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/6.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/7.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/8.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/9.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/10.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/11.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/12.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/13.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/14.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/15.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/16.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/17.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/18.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/19.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/20.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/21.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/22.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/23.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/24.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/25.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/26.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/27.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/28.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/29.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/30.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/31.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/32.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/33.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/34.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/35.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/36.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/37.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/38.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/39.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/40.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/41.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/42.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/43.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/44.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/45.png">
+<meta property="og:image" content="https://winnietube.github.io/img/vmUbuntu/46.png">
+<meta property="article:published_time" content="2025-03-04T07:41:20.000Z">
+<meta property="article:modified_time" content="2025-03-04T07:41:31.264Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://winnietube.github.io/img/vmUbuntu/1.png">
+  
+  
+  
+  <title>VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop) - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"winnietube.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Winnie</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-04 15:41" pubdate>
+          2025年3月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          965 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="VMware安装-Linux操作系统搭建记录-VMware16-Ubuntu18-04-desktop"><a href="#VMware安装-Linux操作系统搭建记录-VMware16-Ubuntu18-04-desktop" class="headerlink" title="VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)"></a>VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)</h1><h2 id="一、VMware虚拟机安装"><a href="#一、VMware虚拟机安装" class="headerlink" title="一、VMware虚拟机安装"></a>一、VMware虚拟机安装</h2><h3 id="1-下载vmware16安装包"><a href="#1-下载vmware16安装包" class="headerlink" title="1. 下载vmware16安装包"></a>1. 下载vmware16安装包</h3><p>网上很多资源，这次顺手存一下到自己的百度网盘里了。  </p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h3><p>（1）双击下载好的.exe程序开始安装  </p>
+<p>（2）点击下一步<br><img src="/../img/vmUbuntu/1.png" srcset="/img/loading.gif" lazyload alt="1">  </p>
+<p>（3）勾选同意后下一步<br><img src="/../img/vmUbuntu/2.png" srcset="/img/loading.gif" lazyload alt="2">  </p>
+<p>（4）更改VMware的安装位置，不建议放系统盘（C），更改后点下一步（可以自己创建一个虚拟机安装目录存到对应目录下）<br><img src="/../img/vmUbuntu/3.png" srcset="/img/loading.gif" lazyload alt="3">  </p>
+<p>（5）不勾选直接下一步<br><img src="/../img/vmUbuntu/4.png" srcset="/img/loading.gif" lazyload alt="4">  </p>
+<p>（6）直接下一步<br><img src="/../img/vmUbuntu/5.png" srcset="/img/loading.gif" lazyload alt="5">  </p>
+<p>（7）点击安装<br><img src="/../img/vmUbuntu/6.png" srcset="/img/loading.gif" lazyload alt="6">    </p>
+<p>（8）等待安装完成（需要等待一会儿，尤其是在安装网络驱动时）<br><img src="/../img/vmUbuntu/7.png" srcset="/img/loading.gif" lazyload alt="7">     </p>
+<p>（9）点击许可证<br><img src="/../img/vmUbuntu/8.png" srcset="/img/loading.gif" lazyload alt="8">   </p>
+<p>（10）输入许可证——拷贝许可证到输入框里即可：<strong>ZF3R0-FHED2-M80TY-8QYGC-NPKYF</strong><br><img src="/../img/vmUbuntu/9.png" srcset="/img/loading.gif" lazyload alt="9">     </p>
+<p>（11）点击完成，这样就安装完成了<br><img src="/../img/vmUbuntu/10.png" srcset="/img/loading.gif" lazyload alt="10">  </p>
+<h2 id="二、安装Linux操作系统"><a href="#二、安装Linux操作系统" class="headerlink" title="二、安装Linux操作系统"></a>二、安装Linux操作系统</h2><h3 id="1-下载镜像源："><a href="#1-下载镜像源：" class="headerlink" title="1. 下载镜像源："></a>1. 下载镜像源：</h3><p>Linux操作系统有很多版本，本次搭建我使用的是从清华大学开源软件镜像网站<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/18.04/">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/18.04/</a>下载的Ubuntu18.04：<br><img src="/../img/vmUbuntu/11.png" srcset="/img/loading.gif" lazyload alt="11">   </p>
+<h3 id="2-开始安装操作系统"><a href="#2-开始安装操作系统" class="headerlink" title="2. 开始安装操作系统"></a>2. 开始安装操作系统</h3><p>（1）用管理员身份打开虚拟机软件<br><img src="/../img/vmUbuntu/12.png" srcset="/img/loading.gif" lazyload alt="12"> </p>
+<p>（2）点击创建虚拟机<br><img src="/../img/vmUbuntu/13.png" srcset="/img/loading.gif" lazyload alt="13"> </p>
+<p>（3）使用典型配置，点击下一步<br><img src="/../img/vmUbuntu/14.png" srcset="/img/loading.gif" lazyload alt="14"> </p>
+<p>（4）选择稍后安装操作系统，点击下一步<br><img src="/../img/vmUbuntu/15.png" srcset="/img/loading.gif" lazyload alt="15"> </p>
+<p>（5）选择linux，并选择ubuntu64位<br><img src="/../img/vmUbuntu/16.png" srcset="/img/loading.gif" lazyload alt="16"> </p>
+<p>（6）选择一个存放虚拟机的地方，不要选择VMware的安装目录（重新创建一个目录来存放）<br><img src="/../img/vmUbuntu/17.png" srcset="/img/loading.gif" lazyload alt="17"> </p>
+<p>（7）设定磁盘大小为40GB，并选择为单个文件<br><img src="/../img/vmUbuntu/18.png" srcset="/img/loading.gif" lazyload alt="18"> </p>
+<p>（8）点击完成<br><img src="/../img/vmUbuntu/19.png" srcset="/img/loading.gif" lazyload alt="19"> </p>
+<p>（9）在主机界面点击编辑虚拟机设置<br><img src="/../img/vmUbuntu/20.png" srcset="/img/loading.gif" lazyload alt="20"> </p>
+<p>（10）点击内存，设置虚拟机内存为4096MB<br><img src="/../img/vmUbuntu/21.png" srcset="/img/loading.gif" lazyload alt="21"> </p>
+<p>（11）点击处理器，设置处理器数量为2<br><img src="/../img/vmUbuntu/22.png" srcset="/img/loading.gif" lazyload alt="22"> </p>
+<p>（12）点击CD&#x2F;DVD ，勾选使用ISO映像文件，并选择下载好的镜像文件路径（参考教材中用的是Ubuntu20，选择自己的镜像文件就好了）<br><img src="/../img/vmUbuntu/23.png" srcset="/img/loading.gif" lazyload alt="23"> </p>
+<p>（13）点击USB控制器，点击移除<br><img src="/../img/vmUbuntu/24.png" srcset="/img/loading.gif" lazyload alt="24"> </p>
+<p>（14）点击打印机，点击移除，点击确定<br><img src="/../img/vmUbuntu/25.png" srcset="/img/loading.gif" lazyload alt="25"> </p>
+<h2 id="三、开启虚拟机并安装VMwareTools"><a href="#三、开启虚拟机并安装VMwareTools" class="headerlink" title="三、开启虚拟机并安装VMwareTools"></a>三、开启虚拟机并安装VMwareTools</h2><h3 id="1-开启此虚拟机"><a href="#1-开启此虚拟机" class="headerlink" title="1. 开启此虚拟机"></a>1. 开启此虚拟机</h3><p><img src="/../img/vmUbuntu/26.png" srcset="/img/loading.gif" lazyload alt="26"> </p>
+<p>等待校验完成<br><img src="/../img/vmUbuntu/27.png" srcset="/img/loading.gif" lazyload alt="27"> </p>
+<p>选择install ubuntu<br><img src="/../img/vmUbuntu/28.png" srcset="/img/loading.gif" lazyload alt="28"> </p>
+<p>选择英语键盘，然后continue<br><img src="/../img/vmUbuntu/29.png" srcset="/img/loading.gif" lazyload alt="29"> </p>
+<p>Normal installation，不勾选安装时更新，按下continue<br><img src="/../img/vmUbuntu/30.png" srcset="/img/loading.gif" lazyload alt="30"> </p>
+<p>直接点击Install Now<br><img src="/../img/vmUbuntu/31.png" srcset="/img/loading.gif" lazyload alt="31"> </p>
+<p>直接continue<br><img src="/../img/vmUbuntu/32.png" srcset="/img/loading.gif" lazyload alt="32"> </p>
+<p>选择地点为shanghai<br><img src="/../img/vmUbuntu/33.png" srcset="/img/loading.gif" lazyload alt="33"> </p>
+<p>设置用户名和密码<br><img src="/../img/vmUbuntu/34.png" srcset="/img/loading.gif" lazyload alt="34"> </p>
+<p>等待一会<br><img src="/../img/vmUbuntu/35.png" srcset="/img/loading.gif" lazyload alt="35"> </p>
+<p>直接Restart Now<br><img src="/../img/vmUbuntu/36.png" srcset="/img/loading.gif" lazyload alt="36"> </p>
+<p>当出现Please remove the installation medium, then press Enter时，按下快捷键ctrl+alt，将鼠标从虚拟机转换到主机。并点击虚拟机-&gt;设置<br><img src="/../img/vmUbuntu/37.png" srcset="/img/loading.gif" lazyload alt="37"> </p>
+<p>点击CD&#x2F;DVD 并勾选使用物理驱动器<br><img src="/../img/vmUbuntu/38.png" srcset="/img/loading.gif" lazyload alt="38"> </p>
+<p>若出现以下情况则选择“是”<br><img src="/../img/vmUbuntu/39.png" srcset="/img/loading.gif" lazyload alt="39"> </p>
+<p>再回到虚拟机中按Enter<br><img src="/../img/vmUbuntu/40.png" srcset="/img/loading.gif" lazyload alt="40"> </p>
+<p>点击自己账户，并输入账户密码<br><img src="/../img/vmUbuntu/41.png" srcset="/img/loading.gif" lazyload alt="41"> </p>
+<p>退出欢迎界面<br><img src="/../img/vmUbuntu/42.png" srcset="/img/loading.gif" lazyload alt="42"> </p>
+<p>暂时不更新，点击Remind Me Later<br><img src="/../img/vmUbuntu/43.png" srcset="/img/loading.gif" lazyload alt="43"> </p>
+<p>在屏幕中右键，点击Open in Terminal<br><img src="/../img/vmUbuntu/44.png" srcset="/img/loading.gif" lazyload alt="44"> </p>
+<p>输入ping -c 4 <a target="_blank" rel="noopener" href="http://www.baidu.com,检查网络是否连通/">www.baidu.com，检查网络是否连通</a><br><img src="/../img/vmUbuntu/45.png" srcset="/img/loading.gif" lazyload alt="45"> </p>
+<h3 id="2-安装VMware-Tools"><a href="#2-安装VMware-Tools" class="headerlink" title="2. 安装VMware Tools"></a>2. 安装VMware Tools</h3><p><strong>背景：</strong><br>在Ubuntu 18.04安装完之后会发现此时的Ubuntu Desktop 并不能在VMware中全屏显示，不能自适应vm; 且无法实现主机到虚拟机的双向复制粘贴。  </p>
+<p><strong>接下来是可以永久自适应vm的解决办法：</strong>  </p>
+<ul>
+<li>（1）首先在终端执行命令sudo apt-get update</li>
+<li>（2）接下来安装vm-tools，在终端执行以下命令：<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">sudo apt-<span class="hljs-built_in">get</span> install <span class="hljs-keyword">open</span>-<span class="hljs-keyword">vm</span>-tools<br>sudo apt-<span class="hljs-built_in">get</span> install <span class="hljs-keyword">open</span>-<span class="hljs-keyword">vm</span>-tools-desktop<br></code></pre></td></tr></table></figure>
+安装过程当中，除了输入yes确认外一直按enter键确定即可；</li>
+</ul>
+<p>（3）安装完成后，执行以下操作（见下图）：<br><img src="/../img/vmUbuntu/46.png" srcset="/img/loading.gif" lazyload alt="46">   </p>
+<p>（4）终端执行重启命令，此时就已经自适应了:   </p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">reboot</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="四、参考文章："><a href="#四、参考文章：" class="headerlink" title="四、参考文章："></a>四、参考文章：</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laoshisan.blog.csdn.net/article/details/121434777?fromshare=blogdetail&sharetype=blogdetail&sharerId=121434777&sharerefer=PC&sharesource=weixin_62431476&sharefrom=from_link">虚拟机安装ubuntu后屏幕无法自适应vm窗口大小</a></li>
+</ul>
+<h3 id="！！！！！特殊说明："><a href="#！！！！！特殊说明：" class="headerlink" title="！！！！！特殊说明："></a><strong>！！！！！特殊说明：</strong></h3><p>文档内容只是自己的学习记录，在前辈分享的教程以及网上找到的教程基础上完成的搭建，很多都是CV工程，包括截图偷懒不想回头重新截一次就CV了（知识的搬运工）。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>VMware安装+Linux操作系统搭建记录(VMware16 + Ubuntu18.04-desktop)</div>
+      <div>https://winnietube.github.io/2025/03/04/VMware安装-Linux操作系统搭建记录-VMware16-Ubuntu18-04-desktop/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Winnie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/04/VMware16-Ubuntu18-04-live-server%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="VMware16 + Ubuntu18.04-live-server搭建记录">
+                        <span class="hidden-mobile">VMware16 + Ubuntu18.04-live-server搭建记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

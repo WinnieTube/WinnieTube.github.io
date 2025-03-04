@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Winnie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="doxygen学习与使用记录（Windows）一、doxygen介绍Doxygen是一个强大的文档生成工具，能够从源代码中提取注释并生成多种格式的文档。Doxygen能够自动从代码中的注释生成API文档，支持多种编程语言（包括C、C++、java等）。开发者只需在代码中添加注释，就能轻松生成结构化的文档，提高开发效率。 二、安装1. doxygen官网   2. 进入官网后，根据系统选择对应文件下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="doxygen学习与使用记录（Windows）">
+<meta property="og:url" content="https://winnietube.github.io/2025/03/04/doxygen%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88Windows%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="doxygen学习与使用记录（Windows）一、doxygen介绍Doxygen是一个强大的文档生成工具，能够从源代码中提取注释并生成多种格式的文档。Doxygen能够自动从代码中的注释生成API文档，支持多种编程语言（包括C、C++、java等）。开发者只需在代码中添加注释，就能轻松生成结构化的文档，提高开发效率。 二、安装1. doxygen官网   2. 进入官网后，根据系统选择对应文件下">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://winnietube.github.io/img/doxygenLearn/doxygen.png">
+<meta property="og:image" content="https://winnietube.github.io/img/doxygenLearn/install_Doxy.jpg">
+<meta property="og:image" content="https://winnietube.github.io/img/doxygenLearn/doxyAndsphinx.png">
+<meta property="article:published_time" content="2025-03-04T07:30:53.000Z">
+<meta property="article:modified_time" content="2025-03-04T07:31:07.732Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://winnietube.github.io/img/doxygenLearn/doxygen.png">
+  
+  
+  
+  <title>doxygen学习与使用记录（Windows） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"winnietube.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Winnie</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="doxygen学习与使用记录（Windows）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-04 15:30" pubdate>
+          2025年3月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">doxygen学习与使用记录（Windows）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="doxygen学习与使用记录（Windows）"><a href="#doxygen学习与使用记录（Windows）" class="headerlink" title="doxygen学习与使用记录（Windows）"></a>doxygen学习与使用记录（Windows）</h1><h2 id="一、doxygen介绍"><a href="#一、doxygen介绍" class="headerlink" title="一、doxygen介绍"></a>一、doxygen介绍</h2><p>Doxygen是一个强大的文档生成工具，能够从源代码中提取注释并生成多种格式的文档。Doxygen能够自动从代码中的注释生成API文档，支持多种编程语言（包括C、C++、java等）。开发者只需在代码中添加注释，就能轻松生成结构化的文档，提高开发效率。</p>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><p><strong>1. <a target="_blank" rel="noopener" href="https://www.doxygen.nl/">doxygen官网</a></strong><br><img src="/../img/doxygenLearn/doxygen.png" srcset="/img/loading.gif" lazyload alt="doxygen官网下载页">  </p>
+<p><strong>2. 进入官网后，根据系统选择对应文件下载。</strong><br>下载完成后双击.exe文件进行安装，根据提示逐步安装即可。<br><img src="/../img/doxygenLearn/install_Doxy.jpg" srcset="/img/loading.gif" lazyload alt="doxygen安装"></p>
+<h2 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h2><p>接下来尝试使用sphinx + doxygen根据源代码自动生成文档。   </p>
+<p>Doxygen 与 Sphinx 不能直接关联，即 Sphinx 不能直接使用 Doxygen 生成的内容来生成 Sphinx 文档，它还需要一个插件来做适配，Breathe 就是为了连接 Doxygen 与 Sphinx 而生。  </p>
+<p>要将 Doxygen 和 Sphinx 结合使用来生成文档，通常需要通过 Doxygen 生成 XML 格式的文档，然后使用 Sphinx 的 breathe 扩展将 Doxygen 生成的 XML 文件集成到 Sphinx 文档中。  </p>
+<h3 id="1-准备所需工具"><a href="#1-准备所需工具" class="headerlink" title="1. 准备所需工具"></a>1. 准备所需工具</h3><p>使用sphinx + doxygen根据源代码自动生成文档前，需要确保已经安装以下工具：  </p>
+<ul>
+<li>Sphinx：用于生成和管理文档。  </li>
+<li>Doxygen：用于从源代码生成 XML 格式的文档。  </li>
+<li>Breathe：breathe 是Sphinx 的一个扩展，用于将 Doxygen 生成的 XML 文档与 Sphinx 集成，它允许将 Doxygen 生成的 XML 输出转换为 Sphinx 文档格式，这对于包含 C++ 代码的文档特别有用。  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># breathe扩展安装命令</span><br>pip <span class="hljs-keyword">install</span> breathe<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-创建工作目录："><a href="#2-创建工作目录：" class="headerlink" title="2. 创建工作目录："></a>2. 创建工作目录：</h3><p>新建一个独立文件夹（如Test_Code），下含2个目录（doc_project、dp_code）分别存储文档项目、项目代码。</p>
+<h3 id="3-创建sphinx项目："><a href="#3-创建sphinx项目：" class="headerlink" title="3. 创建sphinx项目："></a>3. 创建sphinx项目：</h3><p>在doc_project目录下创建文档项目（参考“Sphinx学习与使用记录”完成该步骤）</p>
+<h3 id="4-生成-Doxygen-配置文件"><a href="#4-生成-Doxygen-配置文件" class="headerlink" title="4. 生成 Doxygen 配置文件"></a>4. 生成 Doxygen 配置文件</h3><p>在使用 Doxygen 之前，需要为项目生成一个配置文件 Doxyfile（Doxyfile为自定义配置文件名称）。这个文件定义了 Doxygen 如何处理源代码并生成文档。 </p>
+<p>可以通过以下命令生成一个默认的配置文件，执行该命令后，它将在当前目录下生成一个名为 Doxyfile 的配置文件，之后可以根据需要编辑该文件来定制文档的生成。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">doxygen -<span class="hljs-selector-tag">g</span> Doxyfile<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-配置Doxygen-生成-XML-输出"><a href="#5-配置Doxygen-生成-XML-输出" class="headerlink" title="5. 配置Doxygen 生成 XML 输出"></a>5. 配置Doxygen 生成 XML 输出</h3><p>Doxygen的配置是通过Doxyfile完成的。<br>打开Doxyfile文件，并根据需要按照Doxygen的文档和示例配置文件中提供的选项进行配置。</p>
+<p><strong>1. INPUT —— 输入文件配置：</strong><br>INPUT标记用于指定包含记录源文件的文件和&#x2F;或目录。该标记可以指定需要doxygen自动生成文档的源文件的目录文件名（如 myfile.cpp）或 目录（如 &#x2F;usr&#x2F;src&#x2F;myproject），使用空格分隔文件或目录。 <strong>注意：</strong> 如果此标记为空，则搜索当前目录。  </p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">例：<br><span class="hljs-comment"># 指定源代码文件目录</span><br>INPUT       =    ..<span class="hljs-regexp">/../</span>dp_code<br></code></pre></td></tr></table></figure>
+
+
+<p><strong>2. OUTPUT_DIRECTORY —— 输出目录配置：</strong><br>OUTPUT_DIRECTORY 标记用于指定文档输出的目录，即指定生成的文档将写入的（相对或绝对）路径。<br>如果输入了相对路径，则它将相对于启动 Doxygen 的位置。如果留空，则将使用当前目录。</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">例:</span><br><span class="hljs-comment"># 指定生成的文档输出到build/doxygen目录</span><br>OUTPUT_DIRECTORY        =   build/doxygen<br></code></pre></td></tr></table></figure>
+
+<p><strong>3. GENERATE_HTML —— 生成 HTML 文档：</strong><br>GENERATE_HTML 标记控制是否生成 HTML 格式的文档，若该标签设置为YES，Doxygen将生成HTML输出。默认值为 YES。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 若不需要生成HMTL文件，可将该标记设置为NO</span><br><span class="hljs-attr">GENERATE_HTML</span>       =   <span class="hljs-literal">YES</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>4. GENERATE_LATEX —— 生成 LaTex 文档：</strong><br>GENERATE_LATEX：控制是否生成 LaTeX 格式的文档，若该标签设置为YES，Doxygen将生成LaTeX输出。默认值为 YES。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 若不需要生成LATEX文件，可将该标记设置为NO</span><br><span class="hljs-attr">GENERATE_LATEX</span>       =   <span class="hljs-literal">YES</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>5. GENERATE_XML——生成 XML 文档：</strong><br>如果 GENERATE_XML 标签设置为 YES，Doxygen 将生成一个 XML 文件，该文件捕获代码的结构（包括所有文档）。默认值为：NO。  </p>
+<p><strong>要将 Doxygen 和 Sphinx 结合使用来生成文档，通常需要通过 Doxygen 生成 XML 格式的文档，然后使用 Sphinx 的 breathe 扩展将 Doxygen 生成的 XML 文件集成到 Sphinx 文档中。</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 需要生成LATEX文件，将该标记设置为YES</span><br><span class="hljs-attr">GENERATE_LATEX</span>       =   <span class="hljs-literal">YES</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>6. OUTPUT_DIRECTORY —— 设置doxygen文档输出目录</strong><br>OUTPUT_DIRECTORY标记用来设置doxygen根据源代码文件自动生成文档的文档输出路径。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">OUTPUT_DIRECTORY</span>        = build/doxygen<br></code></pre></td></tr></table></figure>
+
+<p><strong>7. INPUT_ENCODING——设置源文件编码：</strong><br>如果源代码文件是某种特定的编码（如 GB2312），可以设置该标签。此标签可用于指定 Doxygen 解析的源文件的字符编码。Doxygen 在内部使用 UTF-8 编码。Doxygen 使用 libiconv（或 libc 内置的 iconv）进行转码。参阅 libiconv 文档（<a target="_blank" rel="noopener" href="https://www.gnu.org/software/libiconv/%EF%BC%89%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%8F%AF%E8%83%BD%E7%9A%84%E7%BC%96%E7%A0%81%E5%88%97%E8%A1%A8%E3%80%82%E9%BB%98%E8%AE%A4%E5%80%BC%E4%B8%BA%EF%BC%9AUTF-8%E3%80%82">https://www.gnu.org/software/libiconv/）以获取可能的编码列表。默认值为：UTF-8。</a></p>
+<p><strong>8. DOXYFILE_ENCODING——设置配置文件编码：</strong><br>此标记指定配置文件中所有字符使用的编码。默认值为 UTF-8，这也是此标记第一次出现之前所有文本使用的编码。</p>
+<p><strong>9. EXCLUDE——忽略特定文件：</strong><br>EXCLUDE标记指定需要排除的文件或目录。该标记可用于指定应从 INPUT 源文件中排除的文件和&#x2F;或目录。这样就可以轻松地排除INPUT指定根目录的目录树中排除子目录。<br><strong>注意：相对路径是相对于运行 Doxygen 的目录而言的。</strong></p>
+<p><strong>10. PROJECT_NAME：项目名称。</strong><br>PROJECT_NAME 标记是一个单词（或由双引号括起来的单词序列，除非您使用 Doxywizard），用于标识生成文档的项目。此名称用于大多数生成页面的标题和其他一些地方。默认值为：My project。</p>
+<p><strong>11. PROJECT_NUMBER：项目版本号。</strong><br>#PROJECT_NUMBER 标签可用于输入项目或修订编号。这对于存档生成的文档或使用某些版本控制系统来说可能很方便。</p>
+<p>配置完成后，保存并关闭Doxyfile文件。</p>
+<h3 id="6-运行-Doxygen-生成-XML-文件"><a href="#6-运行-Doxygen-生成-XML-文件" class="headerlink" title="6. 运行 Doxygen 生成 XML 文件"></a>6. 运行 Doxygen 生成 XML 文件</h3><p>使用以下命令运行 Doxygen，根据 Doxyfile 配置生成 XML 输出文件：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">doxygen Doxyfile</span><br></code></pre></td></tr></table></figure>
+<p>这会生成一个包含 XML 文档的目录（build&#x2F;doxygen），其中的 index.xml 文件即为 Doxygen 生成的 XML 文件。</p>
+<h3 id="7-配置-Sphinx-项目"><a href="#7-配置-Sphinx-项目" class="headerlink" title="7. 配置 Sphinx 项目"></a>7. 配置 Sphinx 项目</h3><p>接下来，需要设置 Sphinx 来处理 Doxygen 生成的 XML 文件。</p>
+<h4 id="配置-Sphinx-使用-breathe："><a href="#配置-Sphinx-使用-breathe：" class="headerlink" title="配置 Sphinx 使用 breathe："></a>配置 Sphinx 使用 breathe：</h4><ol>
+<li><p>编辑 conf.py 文件，添加 breathe 扩展并配置 Doxygen XML 路径。在 extensions 列表中，添加 breathe 扩展：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#添加扩展</span><br><span class="hljs-attr">extensions</span> =[<span class="hljs-string">&#x27;recommonmark&#x27;</span>,<span class="hljs-string">&#x27;breathe&#x27;</span>]<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置 breathe_projects，指定 Doxygen 生成的 XML 文件所在的路径：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-comment">#指定 Doxygen 生成的 XML 文件的输出路径</span><br>breathe_projects=&#123;<br><span class="hljs-string">&quot;myproject&quot;</span>:<span class="hljs-string">&quot;../build/doxygen/xml&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置 breathe_default_project，指定sphinx默认使用的Doxygen项目名称：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># 指定 Sphinx 默认使用的 Doxygen 项目名称</span><br>breathe <span class="hljs-literal">default</span> project =<span class="hljs-string">&quot;myproject&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置 breathe_domain_by_extension，指定所有 .h 文件按 C 语言域解析</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># 所有 .h 文件按 C 语言域解析</span><br><span class="hljs-attr">breathe_domain_by_extension</span> = &#123;<span class="hljs-string">&quot;h&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="8-编写doxygen风格代码注释"><a href="#8-编写doxygen风格代码注释" class="headerlink" title="8. 编写doxygen风格代码注释"></a>8. 编写doxygen风格代码注释</h3><p>Doxygen通过解析源代码中的注释来生成文档。因此，在编写代码时，需要添加适当的注释。  </p>
+<h4 id="利用VSCode编写"><a href="#利用VSCode编写" class="headerlink" title="利用VSCode编写"></a>利用VSCode编写</h4><p>通过使用vscode编写doxygen风格注释——需要安装Doxygen相关插件：“Doxygen Documentation Generator”  、“Doxygen”  </p>
+<p>成功安装插件后，键盘输入&#x2F;**回车即可自动生成doxygen风格注释。<br>在注释中，使用Doxygen的特殊标记（如@brief、@param、@return等）来描述代码的功能、参数和返回值等信息。</p>
+<h3 id="9-新建-rst文件"><a href="#9-新建-rst文件" class="headerlink" title="9. 新建.rst文件"></a>9. 新建.rst文件</h3><p>最后，我们需要做的就是 doxygen 生成的 xml 文档集成到sphinx文档项目中。  </p>
+<h4 id="1-在source目录下新建目录并在该目录下新建-index-rst-文件，并按照breathe扩展语法编辑-index-rst-文件，比如"><a href="#1-在source目录下新建目录并在该目录下新建-index-rst-文件，并按照breathe扩展语法编辑-index-rst-文件，比如" class="headerlink" title="1. 在source目录下新建目录并在该目录下新建 index.rst 文件，并按照breathe扩展语法编辑 index.rst 文件，比如:"></a>1. 在source目录下新建目录并在该目录下新建 index.rst 文件，并按照breathe扩展语法编辑 index.rst 文件，比如:</h4><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">我的API</span><br><span class="hljs-section">=============</span><br><br><span class="hljs-section">doxygen文档 myproject</span><br><span class="hljs-section">------------------------------------</span><br><span class="hljs-bullet">.. </span>doxygenindex::<br><span class="hljs-code">   :project: myproject</span><br><br><span class="hljs-section">源代码引用</span><br><span class="hljs-section">------------------------------------</span><br><br><span class="hljs-bullet">.. </span>literalinclude:: ../../../dp_code/thread.c<br><span class="hljs-code">   :language: c</span><br><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-可以添加以下内容来包含-Doxygen-生成的文档："><a href="#2-可以添加以下内容来包含-Doxygen-生成的文档：" class="headerlink" title="2. 可以添加以下内容来包含 Doxygen 生成的文档："></a>2. 可以添加以下内容来包含 Doxygen 生成的文档：</h4><p>（<strong>1）在index.rst中，使用Breathe指令批量导入doxygen项目所有内容：</strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">doxygen文档 myproject</span><br><span class="hljs-section">------------------------------------</span><br><br><span class="hljs-bullet">.. </span>doxygenindex::<br><span class="hljs-code">   :project: myproject</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>（2）导入相应的文件生成的文档</strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">sp.h</span><br><span class="hljs-section">----</span><br><br><span class="hljs-bullet">.. </span>doxygenfile:: sp.h<br></code></pre></td></tr></table></figure>
+
+<p><strong>(3)使用 reStructuredText（reST）语法来引用源文件内容</strong><br>添加引用后，Sphinx 就会在生成文档时将 thread.c 文件的内容包含进来，并且 :language: c 告诉 Sphinx 文件是 C 语言代码，适当高亮语法。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">源代码引用</span><br><span class="hljs-section">------------------------------------</span><br><br><span class="hljs-bullet">.. </span>literalinclude:: ../../../dp_code/thread.c<br><span class="hljs-code">   :language: c</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="10-修改index-rst文件"><a href="#10-修改index-rst文件" class="headerlink" title="10. 修改index.rst文件"></a>10. 修改index.rst文件</h3><p>将新建的DX&#x2F;index.rst文件加入到sphinx项目的index.rst文件中。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">学习Doxygen使用记录</span><br><span class="hljs-section">======================================================</span><br><br><span class="hljs-bullet">.. </span>toctree::<br><span class="hljs-code">   :maxdepth: 2</span><br><span class="hljs-code">   :caption: Contents:</span><br><br><span class="hljs-code">   DX/index.rst</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="11-编译运行"><a href="#11-编译运行" class="headerlink" title="11. 编译运行"></a>11. 编译运行</h3><p>编译运行并打开index.html文件，生成文档如下：<br><img src="/../img/doxygenLearn/doxyAndsphinx.png" srcset="/img/loading.gif" lazyload alt="doxygen自动生成文档效果"></p>
+<h2 id="五、参考文章"><a href="#五、参考文章" class="headerlink" title="五、参考文章"></a>五、参考文章</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3266820">使用Doxygen创建代码文档</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://promisechen.github.io/doc_guide/howto.html">如何用sphinx+reST编写文档</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>doxygen学习与使用记录（Windows）</div>
+      <div>https://winnietube.github.io/2025/03/04/doxygen学习与使用记录（Windows）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Winnie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/04/Markdown%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/" title="Markdown文件编译语法规则">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Markdown文件编译语法规则</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/04/Beyond-Compare%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" title="Beyond Compare安装记录">
+                        <span class="hidden-mobile">Beyond Compare安装记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
