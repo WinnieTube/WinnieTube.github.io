@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Winnie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="网络模型与网络协议一、网络模型        OSI体系结构:概念清楚，理论也比较完整，但是它既复杂又不实用。    TCP&#x2F;IP体系结构:TCP&#x2F;IP是一个四层体系结构，得到了广泛的运用。    五层体系结构:为了方便学习，折中OSI体系结构和TCP&#x2F;IP体系结构，综合二者的优点，这样既简洁，又能将概念讲清楚。     TCP&#x2F;IP与OSI最大的不同在于：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络模型与网络协议">
+<meta property="og:url" content="https://winnietube.github.io/2025/03/04/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="网络模型与网络协议一、网络模型        OSI体系结构:概念清楚，理论也比较完整，但是它既复杂又不实用。    TCP&#x2F;IP体系结构:TCP&#x2F;IP是一个四层体系结构，得到了广泛的运用。    五层体系结构:为了方便学习，折中OSI体系结构和TCP&#x2F;IP体系结构，综合二者的优点，这样既简洁，又能将概念讲清楚。     TCP&#x2F;IP与OSI最大的不同在于：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://winnietube.github.io/img/neworkModel/1.png">
+<meta property="og:image" content="https://winnietube.github.io/img/neworkModel/2.png">
+<meta property="og:image" content="https://winnietube.github.io/img/neworkModel/3.png">
+<meta property="og:image" content="https://winnietube.github.io/img/neworkModel/4.png">
+<meta property="article:published_time" content="2025-03-04T08:47:02.000Z">
+<meta property="article:modified_time" content="2025-03-04T08:48:31.578Z">
+<meta property="article:author" content="Winnie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://winnietube.github.io/img/neworkModel/1.png">
+  
+  
+  
+  <title>网络模型与网络协议 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"winnietube.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Winnie</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="网络模型与网络协议"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-04 16:47" pubdate>
+          2025年3月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">网络模型与网络协议</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="网络模型与网络协议"><a href="#网络模型与网络协议" class="headerlink" title="网络模型与网络协议"></a>网络模型与网络协议</h1><h2 id="一、网络模型"><a href="#一、网络模型" class="headerlink" title="一、网络模型"></a>一、网络模型</h2><p><img src="/../img/neworkModel/1.png" srcset="/img/loading.gif" lazyload alt="1">      </p>
+<ul>
+<li><strong>OSI体系结构:</strong><br>概念清楚，理论也比较完整，但是它既复杂又不实用。   </li>
+<li><strong>TCP&#x2F;IP体系结构:</strong><br>TCP&#x2F;IP是一个四层体系结构，得到了广泛的运用。   </li>
+<li><strong>五层体系结构:</strong><br>为了方便学习，折中OSI体系结构和TCP&#x2F;IP体系结构，综合二者的优点，这样既简洁，又能将概念讲清楚。    </li>
+<li><strong>TCP&#x2F;IP与OSI最大的不同在于：</strong><br>OSI是一个理论上的网络通信模型，而TCP&#x2F;IP则是实际广泛应用的网络协议。</li>
+</ul>
+<p><strong>封装和解封装过程：</strong><br><img src="/../img/neworkModel/2.png" srcset="/img/loading.gif" lazyload alt="2"><br><img src="/../img/neworkModel/3.png" srcset="/img/loading.gif" lazyload alt="3">        </p>
+<h2 id="二、各层模型对应网路协议"><a href="#二、各层模型对应网路协议" class="headerlink" title="二、各层模型对应网路协议"></a>二、各层模型对应网路协议</h2><p>那么每一层是如何解析的呢？<br>比如我发送一个 10，如果我们用十进制解码那这个就是我们十进制的 10，如果是二进制解码那就是 1 和 0，但是如果我们提前规定好，1 表示“你” 0 表示“好”，那么我们达成这个协议，那么当传来 10 时你就会翻译为“你好”。<br>那么网络中也是一样的，每一层都会有不同的功能和不同的协议。   </p>
+<table>
+<thead>
+<tr>
+<th align="left">OSI七层网络模型</th>
+<th align="center">TCP&#x2F;IP四层概念模型</th>
+<th align="right">对应网络协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">应用层</td>
+<td align="center">应用层</td>
+<td align="right">HTTP、FTP、SMTP、TFTP、NFA、WAIS</td>
+</tr>
+<tr>
+<td align="left">表示层</td>
+<td align="center">应用层</td>
+<td align="right">Telent、Rlogin、SNMP、Gopher</td>
+</tr>
+<tr>
+<td align="left">会话层</td>
+<td align="center">应用层</td>
+<td align="right">SMTP、DNS</td>
+</tr>
+<tr>
+<td align="left">传输层</td>
+<td align="center">传输层</td>
+<td align="right">TCP、UDP</td>
+</tr>
+<tr>
+<td align="left">网络层</td>
+<td align="center">网络层</td>
+<td align="right">IP、ICMP、ARP、RARP、AKP、UUCP</td>
+</tr>
+<tr>
+<td align="left">数据链路层</td>
+<td align="center">网络接口层</td>
+<td align="right">FDDI、Ethernet、Arpanet、PDN、SLIP、PPP</td>
+</tr>
+<tr>
+<td align="left">物理层</td>
+<td align="center">网络接口层</td>
+<td align="right">IEEE802.1A等</td>
+</tr>
+</tbody></table>
+<h2 id="三、五层网络体系结构概述"><a href="#三、五层网络体系结构概述" class="headerlink" title="三、五层网络体系结构概述"></a>三、五层网络体系结构概述</h2><p>五层网络体系结构各层的主要功能：</p>
+<h3 id="应用层："><a href="#应用层：" class="headerlink" title="应用层："></a>应用层：</h3><p>应用层是网络协议的最高层，主要任务通过进程间的交互完成特定网络应用。应用层协议定义的是应用程序（进程）间通信和交互的规则。<br>对于不同的网络应用需要有不同的应用层协议，在互联网中的应用层协议很多，如域名系统DNS，支持万维网应用的HTTP协议，支持电子邮件的SMTP协议，等等。应用层交互的数据单元称为报文。   </p>
+<h3 id="传输层："><a href="#传输层：" class="headerlink" title="传输层："></a>传输层：</h3><p>传输层负责为两台主机中的进程提供通信服务。该层主要有以下两种协议：   </p>
+<h4 id="（1）TCP传输控制协议-Transmission-Control-Protocol"><a href="#（1）TCP传输控制协议-Transmission-Control-Protocol" class="headerlink" title="（1）TCP传输控制协议 (Transmission Control Protocol)"></a>（1）TCP传输控制协议 (Transmission Control Protocol)</h4><p>提供面向连接的、可靠的数据传输服务，数据传输的基本单位是报文段（segment）；    </p>
+<h4 id="（2）UDP用户数据报协议-User-Datagram-Protocol"><a href="#（2）UDP用户数据报协议-User-Datagram-Protocol" class="headerlink" title="（2）UDP用户数据报协议 (User Datagram Protocol)"></a>（2）UDP用户数据报协议 (User Datagram Protocol)</h4><p>提供无连接的、尽最大努力的数据传输服务，但不保证数据传输的可靠性，数据传输的基本单位是用户数据报。   </p>
+<h3 id="网络层："><a href="#网络层：" class="headerlink" title="网络层："></a>网络层：</h3><p>网络层负责为分组网络中的不同主机提供通信服务，并通过选择合适的路由将数据传递到目标主机。在发送数据时，网络层把运输层产生的报文段或用户数据封装成分组或 包进行传送。<br>在TCP&#x2F;IP体系中，由于网络层使用IP协议，因此分组也叫IP数据报。   </p>
+<h3 id="数据链路层："><a href="#数据链路层：" class="headerlink" title="数据链路层："></a>数据链路层：</h3><p>数据链路层通常简称为链路层。数据链路层在两个相邻节点传输数据时，将网络层交下来的IP数据报组装成帧，在两个相邻节点之间的链路上传送帧。   </p>
+<h3 id="物理层："><a href="#物理层：" class="headerlink" title="物理层："></a>物理层：</h3><p>保数据可以在各种物理媒介上进行传输，为数据的传输提供可靠的环境。  </p>
+<p>下图为应用进程的数据在各层之间的传递过程中所经历的变化的简单示意图：<br><img src="/../img/neworkModel/4.png" srcset="/img/loading.gif" lazyload alt="4">        </p>
+<h2 id="四、TCP协议"><a href="#四、TCP协议" class="headerlink" title="四、TCP协议"></a>四、TCP协议</h2><h3 id="什么是TCP协议？"><a href="#什么是TCP协议？" class="headerlink" title="什么是TCP协议？"></a>什么是TCP协议？</h3><p>TCP(传输控制协议, Transmission Control Protocol) 是一种面向连接的, 可靠的, 基于字节流的传输层通信协议, 广泛应用于互联网中。<br>它旨在提供可靠的端到端通信; 在双方进行通信之前, 必须先通过三次握手建立连接. TCP同时提供了一系列的机制来保证数据的可靠传输, 这些机制包括: 序列号, 确认应答, 重传控制, 流量控制和拥塞控制。  </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>网络模型与网络协议</div>
+      <div>https://winnietube.github.io/2025/03/04/网络模型与网络协议/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Winnie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/04/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E5%92%8C%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B3%E7%B3%BB/" title="虚拟地址和物理地址的关系">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">虚拟地址和物理地址的关系</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/04/%E9%94%81/" title="锁">
+                        <span class="hidden-mobile">锁</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
