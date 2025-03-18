@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Windows远程桌面连接</title>
+    <link href="/2025/03/18/Windows%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/"/>
+    <url>/2025/03/18/Windows%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、查询要连接的电脑IP"><a href="#一、查询要连接的电脑IP" class="headerlink" title="一、查询要连接的电脑IP"></a>一、查询要连接的电脑IP</h2><p>按下win+R打开控制终端，输入下列指令：  </p><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dos"><span class="hljs-built_in">ipconfig</span><br></code></pre></td></tr></table></figure><p>找到 IPv4 地址，如 192.168.1.100。<br>注意：连接WIFI和接入网线两种情况的IP不同哦。</p><h2 id="二、查询本机用户名"><a href="#二、查询本机用户名" class="headerlink" title="二、查询本机用户名"></a>二、查询本机用户名</h2><ol><li>输入下列命令即可查询到本机用户名： <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">net <span class="hljs-keyword">user</span><br></code></pre></td></tr></table></figure></li><li>方法二：输入以下命令并回车：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">whoami</span><br></code></pre></td></tr></table></figure>终端将返回类似于：DESKTOP-123ABC\admin ，其中”admin”就是远程用户名，而 DESKTOP-123ABC 是计算机名。</li></ol><h2 id="三、确认本机密码"><a href="#三、确认本机密码" class="headerlink" title="三、确认本机密码"></a>三、确认本机密码</h2><p>Win + R，输入下列命令并回车：  </p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl"><span class="hljs-section">control</span> userpasswords2<br></code></pre></td></tr></table></figure><p>在弹出的窗口中，你会看到本机所有账户，带有“管理员”权限的账户通常是你要远程登录的账户。<br>记住这个用户名，它就是你远程连接时要输入的。<br>这里查询到的用户信息对应的密码就是远程登陆密码，比如我查询到的账户是我的微软邮箱，那么就应该对应输入我的微软邮箱密码。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>新遇见的C库函数</title>
     <link href="/2025/03/04/%E6%96%B0%E9%81%87%E8%A7%81%E7%9A%84C%E5%BA%93%E5%87%BD%E6%95%B0/"/>
     <url>/2025/03/04/%E6%96%B0%E9%81%87%E8%A7%81%E7%9A%84C%E5%BA%93%E5%87%BD%E6%95%B0/</url>
